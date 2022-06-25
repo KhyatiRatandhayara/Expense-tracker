@@ -1,5 +1,6 @@
 import "./ExpenseItem.css";
 import { ExpenseDate } from "./ExpenseDate";
+import { Card } from "./Card";
 
 interface ExpenseProps {
   itemTitle: string;
@@ -13,12 +14,12 @@ export const ExpenseItem = ({
   itemPrice,
 }: ExpenseProps) => {
   return (
-    <div className="expense-item">
+    <Card className="expense-item">
       <ExpenseDate itemDate={itemDate} />
       <div className="expense-item__description">
         <h2>{itemTitle}</h2>
         <div className="expense-item__price">${itemPrice}</div>
       </div>
-    </div>
+    </Card>
   );
 };
