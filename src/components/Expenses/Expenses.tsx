@@ -1,5 +1,5 @@
 import { ExpenseItem } from "./ExpenseItems";
-import { Card } from "./Card";
+import { Card } from "../UI/Card";
 
 export const Expenses = ({ expenseItems }: { expenseItems: Array<any> }) => {
   let expenseArray = [];
