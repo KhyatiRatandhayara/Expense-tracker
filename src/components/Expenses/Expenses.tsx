@@ -1,16 +1,17 @@
 import { ExpenseItem } from "./ExpenseItems";
 import { Card } from "../UI/Card";
+import "./Expenses.css";
 
 export const Expenses = ({ expenseItems }: { expenseItems: Array<any> }) => {
-  let expenseArray = [];
-  for (let i = 0; i < expenseItems.length; i++) {
-    expenseArray.push(
-      <ExpenseItem
-        itemTitle={expenseItems[i].itemTitle} //itemTitle,itemDate,itemPrice is props
-        itemDate={expenseItems[i].itemDate}
-        itemPrice={expenseItems[i].itemPrice}
-      />
-    );
-  }
-  return <Card className="expenses">{expenseArray}</Card>;
+  return (
+    <Card className="expenses">
+      {expenseItems.map((expenseItem) => (
+        <ExpenseItem
+          itemTitle={expenseItem.itemTitle}
+          itemDate={expenseItem.itemDate}
+          itemPrice={expenseItem.itemPrice}
+        />
+      ))}
+    </Card>
+  );
 };
