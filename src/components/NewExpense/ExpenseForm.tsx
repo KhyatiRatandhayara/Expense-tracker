@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./ExpenseForm.css";
+
 export const ExpenseForm = (props: any) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
@@ -15,10 +16,12 @@ export const ExpenseForm = (props: any) => {
     setEnteredDate(event.target.value);
   };
   const submitHandler = (event: any) => {
+
     const expenseData = {
-      title: enteredTitle,
-      amount: enteredAmount,
-      date: enteredDate,
+      id: Math.random.toString(),
+      itemTitle: enteredTitle,
+      itemDate: enteredDate,
+      itemPrice: enteredAmount,
     };
     props.onSaveExpenseData(expenseData);
     //clear form data after submit the form

@@ -10,6 +10,7 @@
   justify-content: center;
   background: rgba(0, 0, 0, 0.7);
 }
+
 .container .modal {
   z-index: 1;
   background: white;
@@ -21,14 +22,31 @@
   animation: animate 0.3s;
 }
 
+.modal-close-btn {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  padding: 8px 11px;
+  border: 2px solid #40005d;
+  background-color: #40005d;
+  color: white;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
 @keyframes animate {
   from {
     transform: scale(0.5);
   }
+
   to {
     transform: scale(1);
   }
 }
+
 .add-expense-btn {
   font: inherit;
   cursor: pointer;
