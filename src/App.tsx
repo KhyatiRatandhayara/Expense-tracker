@@ -1,28 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Expenses } from "./components/Expenses/Expenses";
 import { NewExpense } from "./components/NewExpense/NewExpense";
 
-const expenseItems = [
-  {
-    id: Math.random.toString(),
-    itemTitle: "item1",
-    itemDate: new Date(),
-    itemPrice: +Math.random().toFixed(4),
-  },
-  {
-    id: Math.random.toString(),
-    itemTitle: "item2",
-    itemDate: new Date(),
-    itemPrice: +Math.random().toFixed(4),
-  },
-];
 
 const App = () => {
+
+  var expenseItems = [
+    {
+      id: Math.random().toString(16).slice(2),
+      itemTitle: "item1",
+      itemDate: new Date(2020, 7, 17),
+      itemPrice: +Math.random().toFixed(4),
+    },
+    {
+      id: Math.random().toString(16).slice(2),
+      itemTitle: "item2",
+      itemDate: new Date(2022, 10, 16),
+      itemPrice: +Math.random().toFixed(4),
+    },
+  ];
   const [newExpenseItem, setNewExpenseItem] = useState(expenseItems);
+
   const newExpenseHandler = (newExpense: any) => {
-    //combine new expense with existing expenses
     setNewExpenseItem((prevExpenses) => {
+      //combine new expense with existing expenses
       return [newExpense, ...prevExpenses];
     });
   };
