@@ -1,6 +1,7 @@
 import "./ExpenseDate.css";
 
 export const ExpenseDate = ({ itemDate }: { itemDate: Date }) => {
+
   const month = itemDate.toLocaleString("en-US", { month: "long" });
   const day = itemDate.toLocaleString("en-US", { day: "2-digit" });
   const year = itemDate.getFullYear();

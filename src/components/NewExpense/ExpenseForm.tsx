@@ -20,7 +20,7 @@ export const ExpenseForm = (props: any) => {
     const expenseData = {
       id: Math.random.toString(),
       itemTitle: enteredTitle,
-      itemDate: enteredDate,
+      itemDate: new Date(enteredDate),
       itemPrice: enteredAmount,
     };
     props.onSaveExpenseData(expenseData);
