@@ -16,7 +16,7 @@ export const ExpenseForm = (props: any) => {
     setEnteredDate(event.target.value);
   };
   const submitHandler = (event: any) => {
-
+    event.preventDefault();
     const expenseData = {
       id: Math.random.toString(),
       itemTitle: enteredTitle,
@@ -28,6 +28,8 @@ export const ExpenseForm = (props: any) => {
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
+    //for closing the button after form submission
+    props.onCloseModal(false);
   };
   return (
     <form onSubmit={submitHandler}>

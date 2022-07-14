@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Expenses } from "./components/Expenses/Expenses";
 import { NewExpense } from "./components/NewExpense/NewExpense";
 
-
 const App = () => {
-
   var expenseItems = [
     {
       id: Math.random().toString(16).slice(2),

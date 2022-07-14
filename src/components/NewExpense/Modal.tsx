@@ -23,7 +23,7 @@ export const Modal = ({ setShowModal, onAddExpense }: any) => {
       <div className="container" ref={modalRef} onClick={closeModal}>
         <div className="modal">
           <button className="modal-close-btn" onClick={() => setShowModal(false)}>X</button>
-          <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+          <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} onCloseModal={setShowModal}/>
         </div>
       </div>
     </div>

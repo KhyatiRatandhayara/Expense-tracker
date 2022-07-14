@@ -1,4 +1,3 @@
-import { ExpenseItem } from "./ExpenseItems";
 import { Card } from "../UI/Card";
 import "./Expenses.css";
 import { ExpenseFilter } from "./ExpensesFilter";
@@ -11,15 +10,18 @@ export const Expenses = ({ expenseItems }: { expenseItems: Array<any> }) => {
 
   const ExpenseYearFilterHandler = (enteredYear: any) => {
     setFilteredYear(enteredYear);
-  }
-  const filterExpenses = expenseItems.filter(expense => {
-    return expense.itemDate.getFullYear().toString() === filteredYear
+  };
+  const filterExpenses = expenseItems.filter((expense) => {
+    return expense.itemDate.getFullYear().toString() === filteredYear;
   });
   return (
     <Card className="expenses">
-      <ExpenseFilter onExpenseYearFilter={ExpenseYearFilterHandler} selected={filteredYear} />
+      <ExpenseFilter
+        onExpenseYearFilter={ExpenseYearFilterHandler}
+        selected={filteredYear}
+      />
       <ExpensesChart expenses={filterExpenses} />
-      <ExpensesList filterExpenses={filterExpenses} />
+      <ExpensesList filterExpenses={filterExpenses} expenseItemsArray = {expenseItems}/>
     </Card>
   );
 };
