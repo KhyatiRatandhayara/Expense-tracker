@@ -1,0 +1,31 @@
+.modal-body {
+    padding: 50px;
+    color: black;
+}
+
+.modal-footer button {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #40005d;
+    border: 1px solid white;
+    padding: 0.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    left: 0px;
+    margin-top: 80px;
+    margin-right: 20px;
+}
+
+#portal_error .container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+}

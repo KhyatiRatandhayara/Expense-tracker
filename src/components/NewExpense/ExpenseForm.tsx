@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import moment from "moment";
 import "./ExpenseForm.css";
+import { ErrorModal } from "./ErrorModal";
 
 export const ExpenseForm = (props: any) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+  const [error, setError] = useState("");
+  const [showErrorModal, setShowErrorModal] = useState(false);
+
 
   const titleChangehandler = (event: any) => {
     setEnteredTitle(event.target.value);
@@ -16,26 +21,48 @@ export const ExpenseForm = (props: any) => {
     setEnteredDate(event.target.value);
   };
   const submitHandler = (event: any) => {
+
     event.preventDefault();
+
+    if (enteredTitle.trim().length === 0 || enteredTitle.trim().length == 1) {
+      setShowErrorModal(true);
+      setError('wrong title');
+      return;
+    }
+    if (!moment(enteredDate, 'DD-MM-YYYY').isValid()) {
+      setShowErrorModal(true);
+      setError('wrong date');
+      return;
+    }
+    if (isNaN(+enteredAmount) || enteredAmount.length == 0) {
+      setShowErrorModal(true);
+      setError('wrong amount');
+      return;
+
+    }
     const expenseData = {
       id: Math.random.toString(),
       itemTitle: enteredTitle,
       itemDate: new Date(enteredDate),
-      itemPrice: enteredAmount,
+      itemPrice: +enteredAmount,
     };
+
     props.onSaveExpenseData(expenseData);
+
     //clear form data after submit the form
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
-    //for closing the button after form submission
+
+    //for closing the modal after form submission
     props.onCloseModal(false);
   };
+
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
-          <label>Title</label>
+          <label                         >Title</label>
           <input
             type="text"
             onChange={titleChangehandler}
@@ -67,6 +94,7 @@ export const ExpenseForm = (props: any) => {
         <button type="submit" className="add-expense-btn">
           Add Expense
         </button>
+        {error && <ErrorModal setShowErrorModal={setShowErrorModal} error={error} />}
       </div>
     </form>
   );
