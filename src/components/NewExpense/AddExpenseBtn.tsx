@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Modal } from "./Modal";
+import {Fragment} from "react";
 
 export const AddExpenseBtn = ({ onAddExpenseData }: any) => {
   const [showModal, setShowModal] = useState(false);
@@ -15,13 +16,13 @@ export const AddExpenseBtn = ({ onAddExpenseData }: any) => {
   };
 
   return (
-    <div>
+    <Fragment>
       <button className="new-expense-btn" onClick={showModalHandler}>
         Add Expense
       </button>
       {showModal ? (
         <Modal setShowModal={setShowModal} onAddExpense={addExpenseHandler} />
       ) : null}
-    </div>
+    </Fragment>
   );
 };

@@ -20,17 +20,23 @@ const App = () => {
   ];
   const [newExpenseItem, setNewExpenseItem] = useState(expenseItems);
 
+
   const newExpenseHandler = (newExpense: any) => {
     setNewExpenseItem((prevExpenses) => {
       //combine new expense with existing expenses
       return [newExpense, ...prevExpenses];
     });
   };
+  const  deleteExpenseHandler = (expenseId : string) => {
+    const newExpensesArray = newExpenseItem.filter(expense => expense.id !==  expenseId);
+    setNewExpenseItem(newExpensesArray);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <NewExpense onAddExpense={newExpenseHandler} />
-        <Expenses expenseItems={newExpenseItem} />
+        <Expenses expenseItems={newExpenseItem} onDeleteExpense= {deleteExpenseHandler}/>
       </header>
     </div>
   );

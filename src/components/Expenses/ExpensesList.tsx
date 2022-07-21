@@ -3,12 +3,17 @@ import "./ExpensesList.css";
 export const ExpensesList = ({
   filterExpenses,
   expenseItemsArray,
+  onDeleteExpense
 }: {
   filterExpenses: Array<any>;
   expenseItemsArray: Array<any>;
+  onDeleteExpense : any
 }) => {
   if (filterExpenses.length === 0) {
     return <p className="expenses-list__fallback">No expenses found.</p>;
+  }
+  const deleteExpenseHandler = (expenseId : string) => {
+    onDeleteExpense(expenseId);
   }
   return (
     <ul className="expenses-list">
@@ -19,7 +24,7 @@ export const ExpensesList = ({
           itemDate={expenseItem.itemDate}
           itemPrice={expenseItem.itemPrice}
           itemId={expenseItem.id}
-          itemArray={expenseItemsArray}
+          onDeleteExpense = {deleteExpenseHandler}
         />
       ))}
     </ul>

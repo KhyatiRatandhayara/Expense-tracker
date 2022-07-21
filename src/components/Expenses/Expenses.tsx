@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ExpensesList } from "./ExpensesList";
 import { ExpensesChart } from "./ExpensesChart";
 
-export const Expenses = ({ expenseItems }: { expenseItems: Array<any> }) => {
+export const Expenses = ({ expenseItems,onDeleteExpense }: { expenseItems: Array<any>,onDeleteExpense : any }) => {
   const [filteredYear, setFilteredYear] = useState("2022");
 
   const ExpenseYearFilterHandler = (enteredYear: any) => {
@@ -14,6 +14,9 @@ export const Expenses = ({ expenseItems }: { expenseItems: Array<any> }) => {
   const filterExpenses = expenseItems.filter((expense) => {
     return expense.itemDate.getFullYear().toString() === filteredYear;
   });
+  const deleteExpenseHandler = (expenseId : string) => {
+    onDeleteExpense(expenseId);
+  }
   return (
     <Card className="expenses">
       <ExpenseFilter
@@ -21,7 +24,7 @@ export const Expenses = ({ expenseItems }: { expenseItems: Array<any> }) => {
         selected={filteredYear}
       />
       <ExpensesChart expenses={filterExpenses} />
-      <ExpensesList filterExpenses={filterExpenses} expenseItemsArray = {expenseItems}/>
+      <ExpensesList filterExpenses={filterExpenses} expenseItemsArray ={expenseItems} onDeleteExpense={deleteExpenseHandler}/>
     </Card>
   );
 };
