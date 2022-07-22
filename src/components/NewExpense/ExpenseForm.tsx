@@ -86,7 +86,7 @@ export const ExpenseForm = (props: any) => {
         <button type="submit" className="add-expense-btn">
           Add Expense
         </button>
-        {error && (
+        {showErrorModal && (
           <ErrorModal setShowErrorModal={setShowErrorModal} error={error} />
         )}
       </div>
