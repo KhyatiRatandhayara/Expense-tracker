@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import moment from "moment";
 import "./ExpenseForm.css";
 import { ErrorModal } from "./ErrorModal";
@@ -20,7 +20,7 @@ export const ExpenseForm = (props: any) => {
     const enteredUserAmont = amountInputRef.current.value;
     const enteredUserDate = dateInputRef.current.value;
 
-    if (enteredUserTitle.trim().length === 0 || enteredUserTitle.trim().length == 1) {
+    if (enteredUserTitle.trim().length === 0 || enteredUserTitle.trim().length === 1) {
       setShowErrorModal(true);
       setError("wrong title");
       return;
@@ -30,7 +30,7 @@ export const ExpenseForm = (props: any) => {
       setError("wrong date");
       return;
     }
-    if (isNaN(+enteredUserAmont) || enteredUserAmont.length == 0) {
+    if (isNaN(+enteredUserAmont) || enteredUserAmont.length === 0) {
       setShowErrorModal(true);
       setError("wrong amount");
       return;

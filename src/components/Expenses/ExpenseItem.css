@@ -35,7 +35,8 @@
   border-radius: 12px;
 }
 
-.delete-expense-btn {
+.delete-expense-btn,
+.edit__expense {
   font-size: 1rem;
   font-weight: bold;
   color: white;

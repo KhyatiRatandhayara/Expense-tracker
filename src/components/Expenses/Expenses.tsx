@@ -5,7 +5,15 @@ import { useState } from "react";
 import { ExpensesList } from "./ExpensesList";
 import { ExpensesChart } from "./ExpensesChart";
 
-export const Expenses = ({ expenseItems,onDeleteExpense }: { expenseItems: Array<any>,onDeleteExpense : any }) => {
+export const Expenses = ({
+  expenseItems,
+  onDeleteExpense,
+  onEditExpenseHandler
+}: {
+  expenseItems: Array<any>;
+  onDeleteExpense: any;
+  onEditExpenseHandler : any
+}) => {
   const [filteredYear, setFilteredYear] = useState("2022");
 
   const ExpenseYearFilterHandler = (enteredYear: any) => {
@@ -14,9 +22,12 @@ export const Expenses = ({ expenseItems,onDeleteExpense }: { expenseItems: Array
   const filterExpenses = expenseItems.filter((expense) => {
     return expense.itemDate.getFullYear().toString() === filteredYear;
   });
-  const deleteExpenseHandler = (expenseId : string) => {
+  const deleteExpenseHandler = (expenseId: string) => {
     onDeleteExpense(expenseId);
-  }
+  };
+  const editExpenseHandler = (editExpenseData: any) => {
+    onEditExpenseHandler(editExpenseData);
+  };
   return (
     <Card className="expenses">
       <ExpenseFilter
@@ -24,7 +35,12 @@ export const Expenses = ({ expenseItems,onDeleteExpense }: { expenseItems: Array
         selected={filteredYear}
       />
       <ExpensesChart expenses={filterExpenses} />
-      <ExpensesList filterExpenses={filterExpenses} expenseItemsArray ={expenseItems} onDeleteExpense={deleteExpenseHandler}/>
+      <ExpensesList
+        filterExpenses={filterExpenses}
+        expenseItemsArray={expenseItems}
+        onDeleteExpense={deleteExpenseHandler}
+        onEditExpenseHandler={editExpenseHandler}
+      />
     </Card>
   );
 };
